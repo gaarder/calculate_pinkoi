@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>試算Pinkoi 管理費用</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="javascripts/fee.js"></script>
+
+    <!-- Le styles -->
+    <link href="stylesheets/styles.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#">試算Pinkoi費用</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+
+      <div class="well">
+  本試算程式僅供參考，實際情況以收到營收報表為主。本試算程式並非官方製作。
+</div>
+<div ng-app>
+  <form class="form-horizontal" ng-controller='FeeCtrl'>
+    <div class="row">
+      <div class="control-group">
+        <label class="control-label" for="inputTotal">總金額</label>
+        <div class="controls">
+          <input type="text" id="inputTotal" placeholder="Total" ng-model="Total" disabled>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputCreditCard">信用卡/Paypal費用</label>
+        <div class="controls">
+          <input  type="number" id="inputCreditCard" placeholder='Credit Card/Paypal' ng-model='Credit' ng-change="change()">
+          <span class="help-block">信用卡/Paypal 處理費 =  ({{Credit || '信用卡/Paypal費用'}} * 15%) + 10 元 = {{(Credit*0.15)+10 || '處理費'}}</span>
+          <span class="help-block">Pinkoi 管理費  =  ({{Credit || '信用卡/Paypal費用'}} * 10%) = {{(Credit*0.1) || '管理費'}}</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputMart">7-11/全家費用</label>
+        <div class="controls">
+          <input type="text" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
+          <span class="help-block">7-11/全家 處理費 =  ({{Mart || '7-11/全家 處理費'}} * 10%) + 15 元 = {{(Credit*0.1)+15 || '處理費'}}</span>
+          <span class="help-block">Pinkoi 管理費  =  ({{Mart || '7-11/全家 處理費'}} * 10%) = {{(Credit*0.1) || '管理費'}}</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputRemittance">被Pinkoi 賺了(未稅)</label>
+        <div class="controls">
+          {{Pinkoi}} 
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputRemittance">總管理費(含稅)</label>
+        <div class="controls">
+          {{FeeTax}} 
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputRemittance">匯款銀行手續費</label>
+        <div class="controls">
+          {{BankFee}} 
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputRemittance">匯款金額</label>
+        <div class="controls">
+          {{Remittance}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="well" style='text-align: center;'>
+          <div class="btn btn-large btn-primary disabled">總金額</br>{{ Total }}</div> - <div class="btn btn-large btn-danger disabled">處理費</br> {{ FeeTax }}</div> - <div class="btn btn-large btn-danger disabled">銀行手續費</br> {{ BankFee }}</div> = <div class="btn btn-large btn-success disabled">匯款金額</br> {{ Remittance }}</div>
+      </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+    </div> <!-- /container -->
+
+    
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit pull-right">該試算程式因今天沒有去擺攤製作而成的 如有問題請洽 sammylintw at gmail.com</p>
+      </div>
+    </div>
+
+  </body>
+</html>
+

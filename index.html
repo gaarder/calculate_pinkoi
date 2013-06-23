@@ -57,12 +57,16 @@
     <div class="container">
 
       <div class="well">
+<<<<<<< HEAD
+  本試算程式僅供參考，實際情況以收到營收報表為主。本試算程式並非官方製作。
+=======
         <p>
         本試算程式僅供參考，實際情況以收到營收報表為主。本試算程式並非官方製作。
         </p>
         <p>
         詳細請至 <a href="http://www.pinkoi.com/page/store-intro#payment">Pinkoi官方網站</a></p>
   
+>>>>>>> gh-pages
 </div>
 <div ng-app>
   <form class="form-horizontal" ng-controller='FeeCtrl'>
@@ -77,7 +81,10 @@
         <label class="control-label" for="inputCreditCard">信用卡/Paypal費用</label>
         <div class="controls">
           <input  type="number" id="inputCreditCard" placeholder='Credit Card/Paypal' ng-model='Credit' ng-change="change()">
+<<<<<<< HEAD
+=======
           <span class="help-inline">該筆交易商品總金額（包含運費）</span>
+>>>>>>> gh-pages
           <span class="help-block">信用卡/Paypal 處理費 =  ({{Credit || '信用卡/Paypal費用'}} * 15%) + 10 元 = {{(Credit*0.15)+10 || '處理費'}}</span>
           <span class="help-block">Pinkoi 管理費  =  ({{Credit || '信用卡/Paypal費用'}} * 10%) = {{(Credit*0.1) || '管理費'}}</span>
         </div>
@@ -86,15 +93,24 @@
         <label class="control-label" for="inputMart">7-11/全家費用</label>
         <div class="controls">
           <input type="text" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
+<<<<<<< HEAD
+=======
           <span class="help-inline">該筆交易商品總金額（不包含運費）</span>
+>>>>>>> gh-pages
           <span class="help-block">7-11/全家 處理費 =  ({{Mart || '7-11/全家 處理費'}} * 10%) + 15 元 = {{(Credit*0.1)+15 || '處理費'}}</span>
           <span class="help-block">Pinkoi 管理費  =  ({{Mart || '7-11/全家 處理費'}} * 10%) = {{(Credit*0.1) || '管理費'}}</span>
         </div>
       </div>
       <div class="control-group">
+<<<<<<< HEAD
+        <label class="control-label" for="inputRemittance">被Pinkoi 賺了(未稅)</label>
+        <div class="controls">
+          {{Pinkoi}} 
+=======
         <label class="control-label" for="inputRemittance">Pinkoi 管理費(未稅)</label>
         <div class="controls">
           {{Pinkoi}} (排除金流手續費)
+>>>>>>> gh-pages
         </div>
       </div>
       <div class="control-group">

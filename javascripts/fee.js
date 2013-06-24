@@ -11,7 +11,6 @@ function FeeCtrl($scope) {
       credit = 0;
     }
 
-    console.log(credit);
     if ((typeof $scope.Mart) != 'undefined' && $scope.Mart != null) {
       mart = $scope.Mart;
     }else

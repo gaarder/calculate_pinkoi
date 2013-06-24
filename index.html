@@ -79,7 +79,7 @@
             <div class="control-group">
               <label class="control-label" for="inputCreditCard">信用卡/Paypal費用</label>
               <div class="controls">
-                <input  type="number" id="inputCreditCard" placeholder='Credit Card/Paypal' ng-model='Credit' ng-change="change()">
+                <input type="number" id="inputCreditCard" placeholder='Credit Card/Paypal' ng-model='Credit' ng-change="change()">
 
                 <span class="help-inline">該筆交易商品總金額（包含運費）</span>
                 <span class="help-block">信用卡/Paypal 處理費 =  ({{Credit || '信用卡/Paypal費用'}} * 15%) + 10 元 = {{(Credit*0.15)+10 || '處理費'}}</span>
@@ -89,7 +89,7 @@
             <div class="control-group">
               <label class="control-label" for="inputMart">7-11/全家費用</label>
               <div class="controls">
-                <input type="text" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
+                <input type="number" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
                 <span class="help-inline">該筆交易商品總金額（不包含運費）</span>
                 <span class="help-block">7-11/全家 處理費 =  ({{Mart || '7-11/全家 處理費'}} * 10%) + 15 元 = {{(Credit*0.1)+15 || '處理費'}}</span>
                 <span class="help-block">Pinkoi 管理費  =  ({{Mart || '7-11/全家 處理費'}} * 10%) = {{(Credit*0.1) || '管理費'}}</span>

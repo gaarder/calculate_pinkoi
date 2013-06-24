@@ -14,14 +14,17 @@ function FeeCtrl($scope) {
     {
       $scope.BankFee = 45;
       $scope.Remittance =  fee + 45;
+      $scope.RemittanceError = '';
     }else if(fee <= 0)
     {
       $scope.BankFee = 0;
-      $scope.Remittance = fee + '(你賣太少了啦，反而要倒貼...)';
+      $scope.Remittance = fee;
+      $scope.RemittanceError = '你賣太少了啦，反而要倒貼...';
     }else
     {
       $scope.BankFee = 0;
-      $scope.Remittance = fee + '(不足1000元累積至下個月份)';
+      $scope.Remittance = fee;
+      $scope.RemittanceError = '不足1000元累積至下個月份';
     }
 
 

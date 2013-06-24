@@ -97,36 +97,38 @@
             </div>
             <div class="control-group">
 
-              <label class="control-label" for="inputRemittance">Pinkoi 管理費(未稅)</label>
+              <label class="control-label" for="inputPinkoi">Pinkoi 管理費(未稅)</label>
               <div class="controls">
-                {{Pinkoi}} (排除金流手續費)
+                <input id="inputPinkoi" type="text" value='{{Pinkoi}}' disabled>
+                <span class="help-inline">排除金流手續費</span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="inputRemittance">總管理費(含稅)</label>
+              <label class="control-label" for="inputFeeTax">總管理費(含稅)</label>
               <div class="controls">
-                {{FeeTax}} 
+                <input id="inputFeeTax" type="text" value='{{FeeTax}}' disabled>
               </div>
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="inputRemittance">匯款銀行手續費</label>
+              <label class="control-label" for="inputBankFee">匯款銀行手續費</label>
               <div class="controls">
-                {{BankFee}} 
+                <input id="inputBankFee" type="text" value='{{BankFee}}' disabled>
               </div>
             </div>
 
             <div class="control-group">
               <label class="control-label" for="inputRemittance">匯款金額</label>
               <div class="controls">
-                {{Remittance}}
+                <input id="inputRemittance" type="text" value='{{Remittance}}' disabled>
               </div>
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="inputRemittance">利潤率</label>
+              <label class="control-label" for="inputProfit">利潤率</label>
               <div class="controls">
                 {{((Remittance / Total)*100).toFixed(1) + '%'}}
+
               </div>
             </div>
 

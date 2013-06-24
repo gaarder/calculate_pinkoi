@@ -91,8 +91,8 @@
               <div class="controls">
                 <input type="number" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
                 <span class="help-inline">該筆交易商品總金額（不包含運費）</span>
-                <span class="help-block">7-11/全家 處理費 =  ({{Mart || '7-11/全家 處理費'}} * 10%) + 15 元 = {{(Credit*0.1)+15 || '處理費'}}</span>
-                <span class="help-block">Pinkoi 管理費  =  ({{Mart || '7-11/全家 處理費'}} * 10%) = {{(Credit*0.1) || '管理費'}}</span>
+                <span class="help-block">7-11/全家 處理費 =  ({{Mart || '7-11/全家 處理費'}} * 10%) + 15 元 = {{(Mart*0.1)+15 || '處理費'}}</span>
+                <span class="help-block">Pinkoi 管理費  =  ({{Mart || '7-11/全家 處理費'}} * 10%) = {{(Mart*0.1) || '管理費'}}</span>
               </div>
             </div>
             <div class="control-group">
@@ -103,17 +103,18 @@
                 <span class="help-inline">排除金流手續費</span>
               </div>
             </div>
+
             <div class="control-group">
-              <label class="control-label" for="inputFeeTax">總管理費(含稅)</label>
+              <label class="control-label" for="inputFeeNoTax">成交管理費(未稅)</label>
               <div class="controls">
-                <input id="inputFeeTax" type="text" value='{{FeeTax}}' disabled>
+                <input id="inputFeeNoTax" type="text" value='{{FeeNoTax}}' disabled>
               </div>
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="inputBankFee">匯款銀行手續費</label>
+              <label class="control-label" for="inputFeeTax">成交管理費(含稅)</label>
               <div class="controls">
-                <input id="inputBankFee" type="text" value='{{BankFee}}' disabled>
+                <input id="inputFeeTax" type="text" value='{{FeeTax}}' disabled>
               </div>
             </div>
 
@@ -136,7 +137,7 @@
 
           <div class="row">
             <div class="well" style='text-align: center;'>
-              <div class="btn btn-large btn-primary disabled">總金額</br>{{ Total }}</div> - <div class="btn btn-large btn-danger disabled">處理費</br> {{ FeeTax }}</div> - <div class="btn btn-large btn-danger disabled">銀行手續費</br> {{ BankFee }}</div> = <div class="btn btn-large btn-success disabled">匯款金額</br> {{ Remittance }}</div>
+              <div class="btn btn-large btn-primary disabled">總金額</br>{{ Total }}</div> - <div class="btn btn-large btn-danger disabled">成交管理費</br> {{ FeeTax }}</div> = <div class="btn btn-large btn-success disabled">匯款金額</br> {{ Remittance }}</div>
             </div>
           </div>
 

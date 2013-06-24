@@ -1,32 +1,44 @@
 function FeeCtrl($scope) {
   $scope.Total = 0;
   $scope.change = function() {
-    var fee,Totalfee = 0;
-    Totalfee = parseInt($scope.Credit) + parseInt($scope.Mart);
-    $scope.Total = Totalfee;
+    var Totalfee = 0;
+    var credit, mart = 0;
     
-    $scope.Pinkoi = ($scope.Credit * 0.1) + ($scope.Mart * 0.1);
-    $scope.FeeTax = ((($scope.Credit * 0.15)+10) + (($scope.Mart * 0.1)+15)) * 1.05;
-
-
-    fee = $scope.Total - $scope.FeeTax; 
-    if (fee >= 1000)
-    {
-      $scope.BankFee = 45;
-      $scope.Remittance =  fee + 45;
-      $scope.RemittanceError = '';
-    }else if(fee <= 0)
-    {
-      $scope.BankFee = 0;
-      $scope.Remittance = fee;
-      $scope.RemittanceError = '你賣太少了啦，反而要倒貼...';
+    if ((typeof $scope.Credit) != 'undefined' || $scope.Credit != null) {
+      credit = $scope.Credit;
     }else
     {
-      $scope.BankFee = 0;
-      $scope.Remittance = fee;
-      $scope.RemittanceError = '不足1000元累積至下個月份';
+      credit = 0;
     }
 
+    if ((typeof $scope.Mart) != 'undefined' || $scope.Mart != null) {
+      mart = $scope.Mart;
+    }else
+    {
+      mart = 0;
+    }
+
+    Totalfee = parseInt(credit) + parseInt(mart);
+    $scope.Total = Totalfee;
+    
+    $scope.Pinkoi = (credit * 0.1) + (mart * 0.1);
+    if (credit > 0 && mart > 0)
+    {
+      $scope.FeeNoTax =((credit * 0.15)+10) + ((mart * 0.1)+15);
+    }else if(credit == 0 && mart == 0)
+    {
+      $scope.FeeNoTax = 0
+    }else if(credit == 0 && mart > 0)
+    {
+      $scope.FeeNoTax =((mart * 0.1)+15);
+    }else if(credit > 0 && mart == 0)
+    {
+      $scope.FeeNoTax =((credit * 0.15)+10)
+    }
+    
+    $scope.FeeTax = $scope.FeeNoTax * 1.05;
+
+    $scope.Remittance = $scope.Total - $scope.FeeTax;
 
   }
 

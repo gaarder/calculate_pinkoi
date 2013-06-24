@@ -4,14 +4,15 @@ function FeeCtrl($scope) {
     var Totalfee = 0;
     var credit, mart = 0;
     
-    if ((typeof $scope.Credit) != 'undefined' || $scope.Credit != null) {
+    if ((typeof $scope.Credit) != 'undefined' && $scope.Credit != null) {
       credit = $scope.Credit;
     }else
     {
       credit = 0;
     }
 
-    if ((typeof $scope.Mart) != 'undefined' || $scope.Mart != null) {
+    console.log(credit);
+    if ((typeof $scope.Mart) != 'undefined' && $scope.Mart != null) {
       mart = $scope.Mart;
     }else
     {

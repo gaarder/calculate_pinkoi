@@ -122,6 +122,14 @@
                 {{Remittance}}
               </div>
             </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputRemittance">利潤率</label>
+              <div class="controls">
+                {{((Remittance / Total)*100).toFixed(1) + '%'}}
+              </div>
+            </div>
+
           </div>
 
           <div class="row">

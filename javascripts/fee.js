@@ -35,6 +35,10 @@ function FeeCtrl($scope) {
     {
       $scope.FeeNoTax =((credit * 0.15)+10)
     }
+
+    if ((typeof $scope.Bonus) != 'undefined' || $scope.Bonus != null) {
+      $scope.FeeNoTax = $scope.FeeNoTax - $scope.Bonus;
+    }
     
     $scope.FeeTax = $scope.FeeNoTax * 1.05;
 

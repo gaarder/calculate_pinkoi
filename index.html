@@ -105,7 +105,15 @@
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="inputFeeNoTax">成交管理費(未稅)</label>
+              <label class="control-label" for="inputBonus">Pinkoi紅利</label>
+              <div class="controls">
+                <input id="inputBonus" type="number" ng-model='Bonus' ng-change="change()">
+                <span class="help-inline">由Pinkoi全額負擔</span>
+                
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputBonus">成交管理費(未稅)</label>
               <div class="controls">
                 <input id="inputFeeNoTax" type="text" value='{{FeeNoTax}}' disabled>
               </div>

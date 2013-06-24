@@ -145,7 +145,7 @@
 
           <div class="row">
             <div class="well" style='text-align: center;'>
-              <div class="btn btn-large btn-primary disabled">總金額</br>{{ Total }}</div> - <div class="btn btn-large btn-danger disabled">成交管理費</br> {{ FeeTax }}</div> = <div class="btn btn-large btn-success disabled">匯款金額</br> {{ Remittance }}</div>
+              <div class="btn btn-large btn-primary disabled">總金額</br>{{ Total }}</div> - ( <div class="btn btn-large btn-danger disabled">成交管理費</br> {{ FeeNoTax }}</div> + <div class="btn btn-large btn-danger disabled">成交管理費(5%稅金)</br> {{ FeeNoTax * 0.05 || '' }}</div> ) = <div class="btn btn-large btn-success disabled">匯款金額</br> {{ Remittance }}</div>
             </div>
           </div>
 

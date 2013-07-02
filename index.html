@@ -8,7 +8,24 @@
     <meta name="author" content="">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     <script src="javascripts/fee.js"></script>
+erVoice JavaScript SDK (only needed once on a page) -->
+<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/dETbrJzuvYGd6ZnM7GXg.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
 
+<!-- A tab to launch the Classic Widget -->
+<script>
+UserVoice = window.UserVoice || [];
+UserVoice.push(['showTab', 'classic_widget', {
+  mode: 'full',
+  primary_color: '#cc6d00',
+  link_color: '#007dbf',
+  default_mode: 'support',
+  forum_id: 213174,
+  tab_label: '建議與回饋',
+  tab_color: '#cc6d00',
+  tab_position: 'middle-right',
+  tab_inverted: false
+}]);
+</script>
     <!-- Le styles -->
     <link href="stylesheets/styles.css" rel="stylesheet">
     <style>
@@ -60,10 +77,17 @@
 
       <div class="well">
         <p>
+        試算Pinkoi費用，是用來計算「單筆」產品費用，會自動產生產品的管理費用，所以如果用多筆產品費用，誤差值會變大到我無法控制....
+        </p>
+        <p>
         本試算程式僅供參考，實際情況以收到營收報表為主。本試算程式並非官方製作。
         </p>
         <p>
         詳細請至 <a href="http://www.pinkoi.com/page/store-intro#payment">Pinkoi官方網站</a></p>
+        <h3>使用方式</h3>
+        <p>
+        輸入
+        </p>
       </div>
 
       <div ng-app>

@@ -6,68 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
     <script src="javascripts/fee.js"></script>
-<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/dETbrJzuvYGd6ZnM7GXg.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
 
-<!-- A tab to launch the Classic Widget -->
-<script>
-UserVoice = window.UserVoice || [];
-UserVoice.push(['showTab', 'classic_widget', {
-  mode: 'full',
-  primary_color: '#cc6d00',
-  link_color: '#007dbf',
-  default_mode: 'support',
-  forum_id: 213174,
-  tab_label: '建議與回饋',
-  tab_color: '#cc6d00',
-  tab_position: 'middle-right',
-  tab_inverted: false
-}]);
-</script>
     <!-- Le styles -->
-    <link href="stylesheets/styles.css" rel="stylesheet">
+    <link href="stylesheets/sass-bootstrap.min.css" rel="stylesheet">
+
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-23558179-8', 'sammylin.github.io');
-      ga('send', 'pageview');
-
-    </script>
   </head>
 
   <body>
-    <a href="https://github.com/SammyLin/calculate_pinkoi">
+    <a href="https://github.com/gaarder/calculate_pinkoi">
       <img style="position: absolute; top: 0; right: 0; border: 0;z-index: 9999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub">
     </a>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">試算Pinkoi費用</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
+          <a class="navbar-brand" href="#">試算Pinkoi費用<small>（加強版）</small></a>
         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
 
@@ -83,98 +54,94 @@ UserVoice.push(['showTab', 'classic_widget', {
         </p>
         <p>
         詳細請至 <a href="http://www.pinkoi.com/page/store-intro#payment">Pinkoi官方網站</a></p>
-        <h3>使用方式</h3>
+        <!--<h3>使用方式</h3>
         <p>
-        <ol>
+        <ol style="text-decoration:line-through;">
           <li>以產品單筆單價輸入價格</li>
           <li><strong>信用卡/Paypal費用</strong>或是<strong>7-11/全家費用</strong>則一輸入</li>
           <li>就會產生相關費用</li>
           <li>(自己可假設Pinkoi有回饋消費者紅利,可在<strong>Pinkoi紅利</strong>回饋金額)</li>
         </ol>
         <h3>建議與回饋</h3>
-        <p>如果有問題你覺得有什麼更棒的功能歡迎在右側的<strong>建議與回饋</strong>跟我講,如果我有空的話會盡力處理:) </p>
-        </p>
+        <p style="text-decoration:line-through;">如果有問題你覺得有什麼更棒的功能歡迎在右側的<strong>建議與回饋</strong>跟我講,如果我有空的話會盡力處理:) </p>
+        </p>--->
       </div>
 
       <div ng-app>
-        <form class="form-horizontal" ng-controller='FeeCtrl'>
+        <form class="form-horizontal" ng-controller='FeeCtrl' role="form">
 
           <div class="row">
-            <div class="control-group">
-              <label class="control-label" for="inputTotal">總金額</label>
-              <div class="controls">
-                <input type="text" id="inputTotal" placeholder="Total" ng-model="Total" disabled>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputTotal">訂單金額</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputTotal" placeholder="Total" ng-model="Total" disabled>
               </div>
             </div>
-            <div class="control-group">
-              <label class="control-label" for="inputCreditCard">信用卡/Paypal費用</label>
-              <div class="controls">
-                <input type="number" id="inputCreditCard" placeholder='Credit Card/Paypal' ng-model='Credit' ng-change="change()">
-
-                <span class="help-inline">該筆交易商品總金額（包含運費）</span>
-                <span class="help-block">信用卡/Paypal 處理費 =  ({{Credit || '信用卡/Paypal費用'}} * 15%) + 10 元 = {{(Credit*0.15)+10 || '處理費'}}</span>
-                <span class="help-block">Pinkoi 管理費  =  ({{Credit || '信用卡/Paypal費用'}} * 10%) = {{(Credit*0.1) || '管理費'}}</span>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputCreditCard">信用卡/Paypal付款金額</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="inputCreditCard" placeholder='Credit Card/Paypal' ng-model='Credit' ng-change="change()">
               </div>
             </div>
-            <div class="control-group">
-              <label class="control-label" for="inputMart">7-11/全家費用</label>
-              <div class="controls">
-                <input type="number" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
-                <span class="help-inline">該筆交易商品總金額（不包含運費）</span>
-                <span class="help-block">7-11/全家 處理費 =  ({{Mart || '7-11/全家 處理費'}} * 10%) + 15 元 = {{(Mart*0.1)+15 || '處理費'}}</span>
-                <span class="help-block">Pinkoi 管理費  =  ({{Mart || '7-11/全家 處理費'}} * 10%) = {{(Mart*0.1) || '管理費'}}</span>
-              </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputMart">7-11/全家付款金額</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
+        	  </div>
             </div>
-            <div class="control-group">
-
-              <label class="control-label" for="inputPinkoi">Pinkoi 管理費(未稅)</label>
-              <div class="controls">
-                <input id="inputPinkoi" type="text" value='{{Pinkoi}}' disabled>
-                <span class="help-inline">排除金流手續費</span>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputPinkoi">Pinkoi 管理費(未稅)</label>
+              <div class="col-sm-4">
+                <input id="inputPinkoi" class="form-control" type="text" value='{{Pinkoi}}' disabled>
+                <span class="help-block">排除金流手續費</span>
               </div>
             </div>
 
-            <div class="control-group">
-              <label class="control-label" for="inputBonus">Pinkoi紅利</label>
-              <div class="controls">
-                <input id="inputBonus" type="number" ng-model='Bonus' ng-change="change()">
-                <span class="help-inline">由Pinkoi全額負擔</span>
-                
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputBonus">Pinkoi 負擔之紅利</label>
+              <div class="col-sm-4">
+                <input id="inputpBonus" class="form-control" type="number" ng-model='pBonus' ng-change="change()">
               </div>
             </div>
-            <div class="control-group">
-              <label class="control-label" for="inputBonus">成交管理費(未稅)</label>
-              <div class="controls">
-                <input id="inputFeeNoTax" type="text" value='{{FeeNoTax}}' disabled>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputpDiscount">Pinkoi 負擔之折抵</label>
+              <div class="col-sm-4">
+                <input id="inputpDiscount" class="form-control" type="number" ng-model='pDiscount' ng-change="change()">
               </div>
             </div>
-
-            <div class="control-group">
-              <label class="control-label" for="inputFeeTax">成交管理費(含稅)</label>
-              <div class="controls">
-                <input id="inputFeeTax" type="text" value='{{FeeTax}}' disabled>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputBonus">成交管理費(未稅)</label>
+              <div class="col-sm-4">
+                <input id="inputFeeNoTax" class="form-control" type="text" value='{{FeeNoTax}}' disabled>
               </div>
             </div>
 
-            <div class="control-group">
-              <label class="control-label" for="inputRemittance">匯款金額</label>
-              <div class="controls">
-                <input id="inputRemittance" type="text" value='{{Remittance}}' disabled><span class="help-inline">{{RemittanceError}}</span>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputFeeTax">成交管理費(含稅)</label>
+              <div class="col-sm-4">
+                <input id="inputFeeTax" class="form-control" type="text" value='{{FeeTax}}' disabled>
               </div>
             </div>
 
-            <div class="control-group">
-              <label class="control-label" for="inputProfit">利潤率</label>
-              <div class="controls">
-                {{((Remittance / Total)*100).toFixed(1) + '%'}}
-
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputRemittance">匯款金額</label>
+              <div class="col-sm-4">
+                <input id="inputRemittance" class="form-control" type="text" value='{{Remittance}}' disabled><span class="help-inline">{{RemittanceError}}</span>
               </div>
             </div>
 
-            <div class="control-group">
-              <label class="control-label" for="inputProfit">其實你可以賣</label>
-              <div class="controls">
-                <input id="inputRemittance" type="text" value='{{(Total/(Remittance / Total)).toFixed(0) }}' disabled><span class="help-inline">該費用是原來的金額去除利潤率，如果你擺攤的時候賣原來的價格，你在Pinkoi可以賣這個價格(僅供參考)</span>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputProfit">利潤率</label>
+              <label class="col-sm-4 control-label" id="inputProfit">
+                {{profitRate}}
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputProfit">其實你可以賣</label>
+              <div class="col-sm-4">
+                <input id="inputRemittance" class="form-control" type="text" value='{{(Total/(Remittance / Total)).toFixed(0) }}' disabled>
+                <span class="help-block">該費用是原來的金額去除利潤率，如果你擺攤的時候賣原來的價格，你在Pinkoi可以賣這個價格(僅供參考)</span>
                 
 
               </div>
@@ -184,7 +151,7 @@ UserVoice.push(['showTab', 'classic_widget', {
 
           <div class="row">
             <div class="well" style='text-align: center;'>
-              <div class="btn btn-large btn-primary disabled">總金額</br>{{ Total }}</div> - ( <div class="btn btn-large btn-danger disabled">成交管理費</br> {{ FeeNoTax }}</div> + <div class="btn btn-large btn-danger disabled">成交管理費(5%稅金)</br> {{ FeeNoTax * 0.05 || '' }}</div> ) = <div class="btn btn-large btn-success disabled">匯款金額</br> {{ Remittance }}</div>
+              <div class="btn btn-lg btn-primary disabled">總金額</br>{{ Total }}</div> - ( <div class="btn btn-lg btn-danger disabled">成交管理費</br> {{ FeeNoTax }}</div> + <div class="btn btn-lg btn-danger disabled">成交管理費(5%稅金)</br> {{ (FeeNoTax * 0.05).toFixed(0) || '' }}</div> ) = <div class="btn btn-lg btn-success disabled">匯款金額</br> {{ Remittance }}</div>
             </div>
           </div>
 
@@ -195,9 +162,6 @@ UserVoice.push(['showTab', 'classic_widget', {
 
 
     <div id="footer">
-      <div class="container">
-        <p class="muted credit pull-right">該試算程式因今天沒有去擺攤製作而成的 如有問題請洽 sammylintw at gmail.com</p>
-      </div>
     </div>
 
   </body>

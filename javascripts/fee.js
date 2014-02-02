@@ -1,10 +1,16 @@
+
+
 function FeeCtrl($scope) {
   $scope.Total = 0;
+  $scope.profitRate = "0%";
+  $scope.isValid = function(handle) {
+  	return (typeof handle) != 'undefined' && handle != null
+  }
   $scope.change = function() {
     var Totalfee = 0;
     var credit, mart = 0;
     
-    if ((typeof $scope.Credit) != 'undefined' && $scope.Credit != null) {
+    if ($scope.isValid($scope.Credit)){
       credit = $scope.Credit;
     }else
     {
@@ -36,13 +42,16 @@ function FeeCtrl($scope) {
       $scope.FeeNoTax =((credit * 0.15)+10)
     }
 
-    if ((typeof $scope.Bonus) != 'undefined' || $scope.Bonus != null) {
-      $scope.FeeNoTax = $scope.FeeNoTax - $scope.Bonus;
+    if ((typeof $scope.pBonus) != 'undefined' || $scope.pBonus != null) {
+      $scope.FeeNoTax = $scope.FeeNoTax - $scope.pBonus;
     }
     
-    $scope.FeeTax = $scope.FeeNoTax * 1.05;
+    $scope.Pinkoi = Math.round($scope.Pinkoi);
+    $scope.FeeNoTax = Math.round($scope.FeeNoTax);
+    $scope.FeeTax = Math.round($scope.FeeNoTax * 1.05);
 
     $scope.Remittance = $scope.Total - $scope.FeeTax;
+    $scope.profitRate = (($scope.Remittance / $scope.Total)*100).toFixed(1) + '%'
 
   }
 

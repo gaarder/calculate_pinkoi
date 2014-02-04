@@ -21,6 +21,12 @@ Radio Inputs:
 disableSellerDiscount
 disablePinkoiDiscount
 disablePinkoiBonus
+
+TODO: free shipping discount calculation
+bank charge per 6000, 12000, 20000, 40000, 80000
+check inputs & inputready
+range check for discount inputs
+back calculate price
 */
 
 
@@ -38,8 +44,6 @@ function FeeCtrl($scope) {
   
   $scope.change = function() {
   	var inputReady = false;
-    var Totalfee = 0;
-    var credit, mart = 0;
     var delayedPayment = $scope.paymentOption == "rDelayedPayment" ? true : false;
         
     if (this.isValid(this.sellerDiscount)) this.disablePinkoiBonus = true, this.disablePinkoiDiscount = true, this.discountType = "sellerDiscount";
@@ -47,11 +51,7 @@ function FeeCtrl($scope) {
     if (this.isValid(this.pinkoiDiscount)) this.disableSellerDiscount = true, this.disablePinkoiBonus = true, this.discountType = "pinkoiDiscount";
     if (!this.isValid(this.sellerDiscount) && !this.isValid($scope.pinkoiBonus) && !this.isValid($scope.pinkoiDiscount))
     	this.disableSellerDiscount = false, this.disablePinkoiDiscount = false, this.disablePinkoiBonus = false, this.discountType = "none";
-    
-    
-    // TODO check inputs
-    // if inputReady
-    
+       
     this.delayedCharge = delayedPayment ? 15: 0;
   	
     switch (this.discountType) {

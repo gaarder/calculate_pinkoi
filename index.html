@@ -145,7 +145,7 @@
 
           <div class="row">
             <div class="well" style='text-align: center;'>
-              <div class="btn btn-lg btn-primary disabled">總金額</br>{{ orderTotal }}</div> - ( <div class="btn btn-lg btn-danger disabled">成交金流</br> {{ delayedCharge }}</div> + <div class="btn btn-lg btn-danger disabled">成交管理費</br> {{ feeBeforeTax }}</div> + <div class="btn btn-lg btn-danger disabled">管理費營業稅</br> {{ (feeAfterTax - feeBeforeTax) || '' }}</div> + <div class="btn btn-lg btn-danger disabled">金流費攤分</br> {{ (bankingCharge) || '' }}</div> ) = <div class="btn btn-lg btn-success disabled">匯款金額</br> {{ Remittance }}</div>
+              <div class="btn btn-lg btn-primary disabled">總金額</br>{{ orderTotal }}</div> - ( <div class="btn btn-lg btn-danger disabled">成交金流</br> {{ delayedCharge }}</div> + <div class="btn btn-lg btn-danger disabled">成交管理費</br> {{ feeBeforeTax }}</div> + <div class="btn btn-lg btn-danger disabled">管理費營業稅</br> {{ (feeAfterTax - feeBeforeTax) || '' }}</div> + <div class="btn btn-lg btn-danger disabled">金流費攤分</br> {{ (bankingCharge) }}</div> ) = <div class="btn btn-lg btn-success disabled">匯款金額</br> {{ Remittance }}</div>
               <p><small>金流手續費以月收益 6000 估算</small></p>
             </div>
           </div>

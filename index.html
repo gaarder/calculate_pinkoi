@@ -44,7 +44,7 @@
 
 
     <div class="container">
-
+<!--
       <div class="well">
         <p>
         試算Pinkoi費用，是用來計算「單筆」產品費用，會自動產生產品的管理費用，所以如果用多筆產品費用，誤差值會變大到我無法控制....
@@ -54,7 +54,7 @@
         </p>
         <p>
         詳細請至 <a href="http://www.pinkoi.com/page/store-intro#payment">Pinkoi官方網站</a></p>
-        <!--<h3>使用方式</h3>
+        <h3>使用方式</h3>
         <p>
         <ol style="text-decoration:line-through;">
           <li>以產品單筆單價輸入價格</li>
@@ -64,67 +64,71 @@
         </ol>
         <h3>建議與回饋</h3>
         <p style="text-decoration:line-through;">如果有問題你覺得有什麼更棒的功能歡迎在右側的<strong>建議與回饋</strong>跟我講,如果我有空的話會盡力處理:) </p>
-        </p>--->
+        </p>
       </div>
-
+-->
       <div ng-app>
         <form class="form-horizontal" ng-controller='FeeCtrl' role="form">
-
           <div class="row">
             <div class="form-group">
               <label class="col-sm-3 control-label" for="inputTotal">訂單金額</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputTotal" placeholder="Total" ng-model="Total" disabled>
+                <input type="text" class="form-control" id="inputTotal" placeholder="" ng-model="orderTotal" disabled>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputCreditCard">信用卡/Paypal付款金額</label>
+              <label class="col-sm-3 control-label" for="inputlistPrice">定價金額</label>
               <div class="col-sm-4">
-                <input type="number" class="form-control" id="inputCreditCard" placeholder='Credit Card/Paypal' ng-model='Credit' ng-change="change()">
+                <input type="text" class="form-control" id="inputlistPrice" placeholder="" ng-model="listPrice" disabled>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputMart">7-11/全家付款金額</label>
+              <label class="col-sm-3 control-label" for="inputProduct">商品金額</label>
               <div class="col-sm-4">
-                <input type="number" class="form-control" id="inputMart" placeholder='7-11/FamilyMart' ng-model='Mart' ng-change="change()">
+                <input type="number" class="form-control" id="inputProduct" placeholder='' ng-model='productAmount' ng-change="change()">
+              </div>              
+	  		  <label class="radio-inline">
+   		  	  	<input type="radio" ng-model="paymentOption" id="radioInstant" value="rInstantPayment" ng-change="change()">
+    	  	  	信用卡／PayPal 付款
+  			  </label>
+  	  		  <label class="radio-inline">
+    	  	  	<input type="radio" ng-model="paymentOption" id="radioDelayed" value="rDelayedPayment" ng-change="change()">
+    	  	  	便利店／ATM 付款
+  			  </label>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputShipping">運費金額</label>
+              <div class="col-sm-4">
+                <input type="number" class="form-control" id="inputShipping" placeholder='' ng-model='shippingAmount' ng-change="change()">
         	  </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputPinkoi">Pinkoi 管理費(未稅)</label>
+              <label class="col-sm-3 control-label" for="inputSellerDiscount">店家折扣（%）</label>
               <div class="col-sm-4">
-                <input id="inputPinkoi" class="form-control" type="text" value='{{Pinkoi}}' disabled>
-                <span class="help-block">排除金流手續費</span>
+                <input type="number" class="form-control" id="inputSellerDiscount" placeholder='' ng-disabled="disableSellerDiscount" ng-model='sellerDiscount' ng-change="change()">
+        	  </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputPinkoiBonus">Pinkoi 負擔之紅利</label>
+              <div class="col-sm-4">
+                <input id="inputPinkoiBonus" class="form-control" type="number" ng-disabled="disablePinkoiBonus" ng-model='pinkoiBonus' ng-change="change()">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputPinkoiDiscount">Pinkoi 負擔之折抵</label>
+              <div class="col-sm-4">
+                <input id="inputPinkoiDiscount" class="form-control" type="number" ng-disabled="disablePinkoiDiscount" ng-model='pinkoiDiscount' ng-change="change()">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="inputFeeBeforeTax">未稅管理費</label>
+              <div class="col-sm-4">
+                <input id="inputFeeBeforeTax" class="form-control" type="text" value='{{feeBeforeTax}}' disabled>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputBonus">Pinkoi 負擔之紅利</label>
-              <div class="col-sm-4">
-                <input id="inputpBonus" class="form-control" type="number" ng-model='pBonus' ng-change="change()">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputpDiscount">Pinkoi 負擔之折抵</label>
-              <div class="col-sm-4">
-                <input id="inputpDiscount" class="form-control" type="number" ng-model='pDiscount' ng-change="change()">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputBonus">成交管理費(未稅)</label>
-              <div class="col-sm-4">
-                <input id="inputFeeNoTax" class="form-control" type="text" value='{{FeeNoTax}}' disabled>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputFeeTax">成交管理費(含稅)</label>
-              <div class="col-sm-4">
-                <input id="inputFeeTax" class="form-control" type="text" value='{{FeeTax}}' disabled>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputRemittance">匯款金額</label>
+              <label class="col-sm-3 control-label" for="inputRemittance">實收金額</label>
               <div class="col-sm-4">
                 <input id="inputRemittance" class="form-control" type="text" value='{{Remittance}}' disabled><span class="help-inline">{{RemittanceError}}</span>
               </div>
@@ -137,21 +141,12 @@
               </label>
             </div>
 
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputProfit">其實你可以賣</label>
-              <div class="col-sm-4">
-                <input id="inputRemittance" class="form-control" type="text" value='{{(Total/(Remittance / Total)).toFixed(0) }}' disabled>
-                <span class="help-block">該費用是原來的金額去除利潤率，如果你擺攤的時候賣原來的價格，你在Pinkoi可以賣這個價格(僅供參考)</span>
-                
-
-              </div>
-            </div>
-
           </div>
 
           <div class="row">
             <div class="well" style='text-align: center;'>
-              <div class="btn btn-lg btn-primary disabled">總金額</br>{{ Total }}</div> - ( <div class="btn btn-lg btn-danger disabled">成交管理費</br> {{ FeeNoTax }}</div> + <div class="btn btn-lg btn-danger disabled">成交管理費(5%稅金)</br> {{ (FeeNoTax * 0.05).toFixed(0) || '' }}</div> ) = <div class="btn btn-lg btn-success disabled">匯款金額</br> {{ Remittance }}</div>
+              <div class="btn btn-lg btn-primary disabled">總金額</br>{{ orderTotal }}</div> - ( <div class="btn btn-lg btn-danger disabled">成交金流</br> {{ delayedCharge }}</div> + <div class="btn btn-lg btn-danger disabled">成交管理費</br> {{ feeBeforeTax }}</div> + <div class="btn btn-lg btn-danger disabled">管理費營業稅</br> {{ (feeAfterTax - feeBeforeTax) || '' }}</div> + <div class="btn btn-lg btn-danger disabled">金流費攤分</br> {{ (bankingCharge) || '' }}</div> ) = <div class="btn btn-lg btn-success disabled">匯款金額</br> {{ Remittance }}</div>
+              <p><small>金流手續費以月收益 6000 估算</small></p>
             </div>
           </div>
 
